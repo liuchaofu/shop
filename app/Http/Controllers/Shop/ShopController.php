@@ -6,12 +6,16 @@ use App\Models\Shop;
 use App\Models\ShopCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends BaseController
 {
+
     //显示添加视图
     public function index(Request $request)
     {
+//        $id = Auth::id();
+//        dd($id);
         $fl = ShopCategory::all();
 
         //post
@@ -27,16 +31,18 @@ class ShopController extends BaseController
 
             ]);
             $data = $request->post();
-
+            $id = Auth::id();
             //添加修改的图片到数据库
             $data['shop_img']=$request->file("shop_img")->store("images","img");
-
+            $data['user_id']=$id;
             $data['brand'] = $request->has("brand")?1:0;
             $data['on_time'] = $request->has("on_time")?1:0;
             $data['fengniao'] = $request->has("fengniao")?1:0;
             $data['piao'] = $request->has("piao")?1:0;
             $data['zhun'] = $request->has("zhun")?1:0;
             $data['bao'] = $request->has("bao")?1:0;
+
+
 //            dd($data);
 //            send_cost
             if(Shop::create($data)){

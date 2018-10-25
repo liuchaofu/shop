@@ -2,7 +2,9 @@
 @section("title","商铺首页")
 
 @section("content")
-    <a href="{{route("shop.sp.index")}}" class="btn btn-info">添加店铺信息</a>
+    <table>
+        <th>遍历点什么数据视图，或者欢迎什么的</th>
+    </table>
 
 @endsection
 

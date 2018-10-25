@@ -62,14 +62,12 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
 
-        //return $request->expectsJson()
-        //            ? response()->json(['message' => $exception->getMessage()], 401)
-        //            : redirect()->guest(route('login'));
+
         if ($request->expectsJson()) {
             return response()->json(['message' => $exception->getMessage()], 401);
         } else {
             session()->flash("danger","没有权限");
-            return in_array('admin', $exception->guards()) ? redirect()->guest(route('shop.user.index')) : redirect()->guest(route('shop.user.login'));
+            return in_array('admin', $exception->guards()) ? redirect()->guest(route("admin.ad.login")) : redirect()->guest(route("shop.user.login"));
         }
     }
 

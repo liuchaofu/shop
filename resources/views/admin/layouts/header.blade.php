@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">商家账户</a>
+            <a class="navbar-brand" href="{{route("admin.ad.index")}}">首页</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,7 +21,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{route("admin.user.index")}}">商家账号</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="">商家信息</a></li>
+                        <li><a href="{{route("admin.ad.add")}}">商家信息</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{route("admin.ac.insert")}}">商家账号和商家信息</a></li>
                     </ul>
@@ -39,10 +39,10 @@
                             {{--{{\Illuminate\Support\Facades\Auth::user()->name}}--}}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">编辑</a></li>
+                            <li><a href="{{route("admin.ad.info")}}">个人信息</a></li>
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="">注销</a></li>
+                            <li><a href="{{route("admin.ad.logout")}}">注销</a></li>
                         </ul>
                     </li>
                 @endauth

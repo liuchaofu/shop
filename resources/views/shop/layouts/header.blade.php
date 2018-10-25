@@ -8,22 +8,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">痒痒鼠</a>
+            <a class="navbar-brand" href="#">彼岸花</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="">套餐 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="">修改<span class="sr-only">(current)</span></a></li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">充值￥消费 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">something <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="">充值</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href=""> 消费</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href=""> 消费记录</a></li>
+
+
                     </ul>
                 </li>
             </ul>
@@ -38,17 +38,17 @@
 {{\Illuminate\Support\Facades\Auth::user()->name}}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">编辑</a></li>
+                            <li><a href="{{{route("shop.user.info")}}}">个人密码</a></li>
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="">注销</a></li>
+                            <li><a href="{{route("shop.user.logout")}}">注销</a></li>
                         </ul>
                     </li>
                 @endauth
 
                 @guest
-                    <li><a href="">登录</a></li>
-                    <li><a href="">注册</a></li>
+                    <li><a href="{{route("shop.user.login")}}">登录</a></li>
+                    <li><a href="{{route("shop.user.reg")}}">注册</a></li>
                 @endguest
 
             </ul>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -60,13 +61,19 @@ class UserController extends Controller
     //删除
     public function del($id)
     {
+
         //找到一个
         $users = User::find($id);
+        //判断在shop里面有没有它的店铺，有就不能删除
+        $check = DB::select('select * from shops where user_id = ?', ["$id"]);
 
-
-        if($users->delete()){
+        if($check){
+            return redirect()->route("admin.user.index")->with("info", "该用户下面还有店铺，不能删除");
+        }else{
+            $users->delete();
             return redirect()->route("admin.user.index")->with("success", "删除成功");
         }
+
 
     }
 }
